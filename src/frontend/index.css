@@ -1,0 +1,193 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* === Fonts === */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque[opsz,wdth,wght].woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Sora";
+  src: url("/assets/fonts/Sora[wght].woff2") format("woff2");
+  font-weight: 100 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* ElectroLearn Dark Theme - Electric Space */
+    --background: 0.08 0.01 265;
+    --foreground: 0.96 0.01 240;
+    --card: 0.11 0.015 265;
+    --card-foreground: 0.96 0.01 240;
+    --popover: 0.13 0.02 265;
+    --popover-foreground: 0.96 0.01 240;
+
+    /* Electric Blue primary */
+    --primary: 0.72 0.2 235;
+    --primary-foreground: 0.08 0.01 265;
+
+    /* Dimmer secondary */
+    --secondary: 0.16 0.02 265;
+    --secondary-foreground: 0.85 0.02 240;
+
+    --muted: 0.15 0.015 265;
+    --muted-foreground: 0.55 0.03 240;
+
+    /* Gold/Amber accent */
+    --accent: 0.78 0.18 85;
+    --accent-foreground: 0.08 0.01 265;
+
+    --destructive: 0.65 0.24 25;
+    --destructive-foreground: 0.98 0 0;
+
+    --border: 0.22 0.03 265;
+    --input: 0.18 0.02 265;
+    --ring: 0.72 0.2 235;
+
+    /* Chart colors for electric palette */
+    --chart-1: 0.72 0.2 235;
+    --chart-2: 0.78 0.18 85;
+    --chart-3: 0.65 0.22 300;
+    --chart-4: 0.55 0.18 175;
+    --chart-5: 0.80 0.15 55;
+
+    --sidebar: 0.10 0.015 265;
+    --sidebar-foreground: 0.96 0.01 240;
+    --sidebar-primary: 0.72 0.2 235;
+    --sidebar-primary-foreground: 0.08 0.01 265;
+    --sidebar-accent: 0.15 0.02 265;
+    --sidebar-accent-foreground: 0.85 0.02 240;
+    --sidebar-border: 0.22 0.03 265;
+    --sidebar-ring: 0.72 0.2 235;
+
+    /* Custom electric tokens */
+    --electric-blue: 0.72 0.2 235;
+    --electric-gold: 0.78 0.18 85;
+    --electric-cyan: 0.82 0.17 198;
+    --electric-glow: 0.72 0.22 235;
+    --deep-space: 0.06 0.012 265;
+    --storm-dark: 0.10 0.015 265;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Sora", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+}
+
+@layer utilities {
+  /* Electric glow utilities */
+  .glow-blue {
+    box-shadow: 0 0 20px oklch(0.72 0.2 235 / 0.5), 0 0 40px oklch(0.72 0.2 235 / 0.2);
+  }
+  .glow-gold {
+    box-shadow: 0 0 20px oklch(0.78 0.18 85 / 0.5), 0 0 40px oklch(0.78 0.18 85 / 0.2);
+  }
+  .glow-cyan {
+    box-shadow: 0 0 20px oklch(0.82 0.17 198 / 0.5), 0 0 40px oklch(0.82 0.17 198 / 0.2);
+  }
+  .text-glow-blue {
+    text-shadow: 0 0 20px oklch(0.72 0.2 235 / 0.8), 0 0 40px oklch(0.72 0.2 235 / 0.4);
+  }
+  .text-glow-gold {
+    text-shadow: 0 0 20px oklch(0.78 0.18 85 / 0.9), 0 0 40px oklch(0.78 0.18 85 / 0.5);
+  }
+  .text-glow-cyan {
+    text-shadow: 0 0 16px oklch(0.82 0.17 198 / 0.8);
+  }
+
+  .electric-border {
+    border: 1px solid oklch(0.72 0.2 235 / 0.4);
+    box-shadow: inset 0 0 20px oklch(0.72 0.2 235 / 0.05), 0 0 20px oklch(0.72 0.2 235 / 0.15);
+  }
+
+  .storm-bg {
+    background: radial-gradient(ellipse at 30% 40%, oklch(0.15 0.05 250 / 0.8) 0%, oklch(0.06 0.012 265) 60%),
+                radial-gradient(ellipse at 70% 60%, oklch(0.12 0.04 280 / 0.6) 0%, transparent 50%);
+  }
+
+  .section-divider {
+    border-top: 1px solid oklch(0.22 0.03 265);
+    background: linear-gradient(to bottom, oklch(0.08 0.012 265), oklch(0.10 0.015 265));
+  }
+
+  /* Animated lightning keyframes */
+  @keyframes lightning-flash {
+    0%, 92%, 100% { opacity: 0; }
+    93%, 98% { opacity: 1; }
+    95% { opacity: 0.3; }
+  }
+
+  @keyframes electric-pulse {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.02); }
+  }
+
+  @keyframes float-particle {
+    0% { transform: translateY(0px) translateX(0px); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 0.7; }
+    100% { transform: translateY(-80px) translateX(20px); opacity: 0; }
+  }
+
+  @keyframes charge-build {
+    0% { box-shadow: 0 0 5px oklch(0.72 0.2 235 / 0.3); }
+    50% { box-shadow: 0 0 30px oklch(0.72 0.2 235 / 0.8), 0 0 60px oklch(0.72 0.2 235 / 0.4); }
+    100% { box-shadow: 0 0 5px oklch(0.72 0.2 235 / 0.3); }
+  }
+
+  @keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+
+  .animate-lightning-flash {
+    animation: lightning-flash 4s infinite;
+  }
+  .animate-electric-pulse {
+    animation: electric-pulse 3s ease-in-out infinite;
+  }
+  .animate-charge-build {
+    animation: charge-build 2s ease-in-out infinite;
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.05;
+    z-index: 0;
+  }
+
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: oklch(0.72 0.2 235 / 0.4) transparent;
+  }
+}
